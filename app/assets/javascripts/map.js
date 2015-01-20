@@ -38,6 +38,7 @@ function addMarkers(map,resp) {
   markers = [];
   
   // canned response until I build the API
+  /*
   resp = {
     "stories": [{
       "id" : "1",
@@ -49,21 +50,57 @@ function addMarkers(map,resp) {
       "date" : "November 18, 2000"
     }]
   };
+  */
 
-  _.each(resp.stories, function(story) {
+  resp = {
+    "links" : {
+      "locations.stories" : "/locations/{location.id}/stories"
+    },
+    "locations": [{
+      "id" : "1",
+      "name" : "Hardaway Hall",
+      "latitude" : "33.213157",
+      "longitude" : "-87.544732",
+      "links" : {
+        "stories" : [ "1", "3" ]
+      }
+    },{
+      "id" : "2",
+      "name" : "Palmer Hall",
+      "latitude" : "33.216990",
+      "longitude" : "-87.546491",
+      "links" : {
+        "stories" : [ "2", "4" ]
+      }
+    }]
+  }
+
+  _.each(resp.locations, function(loc) {
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(story.lat, story.lng)
+      position: new google.maps.LatLng(loc.latitude, loc.longitude)
     });
     // monkey patch the marker to contain our API data 
-    marker["api-data"] = story;
+    // marker["api-data"] = loc;
 
     // masterlist of markers
     markers.push(marker);
     marker.setMap(map);
+
+    // register a click event, close on the loc object
+    google.maps.event.addListener(marker, 'click', function() {
+      getStories(marker, loc);
+    });
   });
 }
 
+function getStories(marker, loc){
+  console.log("clicked " + loc.id);
+  $('#content').append("<p>clicked " + loc.id + "</p>");
+}
+
+/*
 function openInfoWindow(marker) {
   var content = '<div id="infoWindowContent">'
     + '<div id="audio">'
 }
+*/

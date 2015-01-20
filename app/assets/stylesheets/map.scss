@@ -13,10 +13,17 @@ html, body {
   float: left;
 }
 
+#content {
+  float: right;
+  width: 20%;
+  height: 80%;
+  overflow: auto;
+}
+
 .header, .footer {
   float: right;
   width: 20%;
-  height: 50%;
+  height: 10%;
 }
 
 .header {
