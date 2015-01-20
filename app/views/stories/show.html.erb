@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uploader:</strong>
+  <%= @story.uploader %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @story.date %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @story.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @story.description %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @story.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @story.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>
