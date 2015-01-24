@@ -5,7 +5,7 @@
 
 var map = null;
 var markers = [];
-var infoWindow = null;
+// var infoWindow = null;
 
 /*
  * Initializes a new map when the page loads
@@ -21,7 +21,7 @@ function initialize() {
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-  infoWindow = new google.maps.InfoWindow({});
+  // infoWindow = new google.maps.InfoWindow({});
   fetchMarkers(map);
 }
 
@@ -79,8 +79,6 @@ function addMarkers(map,resp) {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(loc.latitude, loc.longitude)
     });
-    // monkey patch the marker to contain our API data 
-    // marker["api-data"] = loc;
 
     // masterlist of markers
     markers.push(marker);
@@ -94,8 +92,61 @@ function addMarkers(map,resp) {
 }
 
 function getStories(marker, loc){
+  addStories({}, loc);
+  /*
+  $.ajax({
+    url: ("/locations/" + loc.id + "/stories/"),
+    success: function(resp){ addStories(resp,loc); },
+    error: function() { alert("Something went wrong"); }
+  });
+  */
+}
+
+function addStories(resp, loc) {
+  // canned response until the API is built
+  resp = {
+    "stories" : [{
+      "id" : "1",
+      "date" : "April 2012",
+      "title" : "Wow such story",
+      "description" : "many description. wow",
+      "storyteller" : "Mr Doge",
+      "location_id" : loc.id,
+      "audio" : "/assets/sample_mpeg4.mp4"
+    },{
+      "id" : "3",
+      "date" : "the year 9001",
+      "title" : "git gud",
+      "description" : "lern 2 code scrub",
+      "storyteller" : "ur mum",
+      "location_id" : loc.id,
+      "audio" : "/assets/sample_mpeg4.mp4"
+    }]
+  };
+
+  // get the container for the stories
+  var content = $('#content');
+  // clear the old stories out
+  content.empty();
+
+  // go through and add story elements
+  _.each(resp.stories, function(story) {
+    content.append(storyToHtml(story));
+  });
+
   console.log("clicked " + loc.id);
   $('#content').append("<p>clicked " + loc.id + "</p>");
+}
+
+function storyToHtml(story) {
+  return '<div class="story" id="' + story.id + '">'
+    + '<div class="ui360">'
+      + '<a href="' + story.audio + '">Play Story</a>'
+    + '</div>'
+    + '<h3>' + story.title + '</h3>'
+    + '<h4>Told by ' + story.storyteller + '</h4>'
+    + '<p class="date">' + story.date + '</p>'
+  + '</div>';
 }
 
 /*
