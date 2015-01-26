@@ -135,13 +135,14 @@ function addStories(resp, loc) {
   });
 
   console.log("clicked " + loc.id);
-  $('#content').append("<p>clicked " + loc.id + "</p>");
+  // $('#content').append("<p>clicked " + loc.id + "</p>");
+  threeSixtyPlayer.init();
 }
 
 function storyToHtml(story) {
   return '<div class="story" id="' + story.id + '">'
     + '<div class="ui360">'
-      + '<a href="' + story.audio + '">Play Story</a>'
+      + '<a href="' + story.audio + '">' + story.title + '</a>'
     + '</div>'
     + '<h3>' + story.title + '</h3>'
     + '<h4>Told by ' + story.storyteller + '</h4>'

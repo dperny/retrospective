@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require underscore
 //= require soundmanager2
+//= require berniecode
+//= require 360player
 //= require_tree .

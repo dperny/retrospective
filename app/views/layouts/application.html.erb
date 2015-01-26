@@ -7,6 +7,8 @@
   <!-- used to tell soundmanager where to find the swfs -->
   <script>var smswfurl = "<%= asset_path 'soundmanager2.swf' %>";</script>
   <!-- javascripts -->
+  <!-- fixes canvas on IE, I think? -->
+  <!--[if IE]><script type="text/javascript" src="/assets/excanvas.js"></script><![endif]-->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <!-- meta tags -->
   <%= csrf_meta_tags %>
@@ -23,6 +25,8 @@
   <div class="header">
     <h1>Retrospective</h1>
   </div>
+  <!-- used for SM2 -->
+  <div id="sm2-container"></div>
 
   <%= yield %>
 
