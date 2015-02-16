@@ -5,7 +5,7 @@
 
 var map = null;
 var markers = [];
-// var infoWindow = null;
+var infoWindow = null;
 
 /*
  * Initializes a new map when the page loads
@@ -21,7 +21,7 @@ function initialize() {
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-  // infoWindow = new google.maps.InfoWindow({});
+  infoWindow = new google.maps.InfoWindow({});
   fetchMarkers(map);
 }
 
@@ -38,20 +38,6 @@ function addMarkers(map,resp) {
   markers = [];
   
   // canned response until I build the API
-  /*
-  resp = {
-    "stories": [{
-      "id" : "1",
-      "lat" : "33.2135434",
-      "lng" : "-87.5305181",
-      "audio" : "/audios/sample_mpeg4.mp4",
-      "storyteller" : "Cindy Rudd",
-      "title" : "An Awkward Encounter with Gene Stallings",
-      "date" : "November 18, 2000"
-    }]
-  };
-  */
-
   resp = {
     "links" : {
       "locations.stories" : "/locations/{location.id}/stories"
@@ -86,13 +72,59 @@ function addMarkers(map,resp) {
 
     // register a click event, close on the loc object
     google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.close();
+      map.panTo(marker.getPosition());
+      infoWindow.setContent("<h2>" + loc.name + "</h2>");
+      infoWindow.open(map, marker);
       getStories(marker, loc);
     });
   });
 }
 
 function getStories(marker, loc){
-  addStories({}, loc);
+  var resp;
+  if(loc.id == 1) {
+    resp = {
+      "stories" : [{
+        "id" : "1",
+        "date" : "April 2012",
+        "title" : "Wow such story",
+        "description" : "many description. wow",
+        "storyteller" : "Mr Doge",
+        "location_id" : loc.id,
+        "audio" : "/assets/ogg.ogg"
+      },{
+        "id" : "3",
+        "date" : "the year 9001",
+        "title" : "story 2.0",
+        "description" : "lern 2 code scrub",
+        "storyteller" : "someone else",
+        "location_id" : loc.id,
+        "audio" : "/assets/wav.wav"
+      }]
+    }
+  } else {
+    resp = {
+      "stories" : [{
+        "id" : "2",
+        "date" : "August 1999",
+        "title" : "Fight with a Professor",
+        "description" : "a description",
+        "storyteller" : "Ms. Pea",
+        "location_id" : loc.id,
+        "audio" : "/assets/ogg.ogg"
+      },{
+        "id" : "4",
+        "date" : "January 1988",
+        "title" : "Lesson on the Stairs",
+        "description" : "another desc",
+        "storyteller" : "Mr. Brown",
+        "location_id" : loc.id,
+        "audio" : "/assets/wav.wav"
+      }]
+    }
+  }
+  addStories(resp, loc);
   /*
   $.ajax({
     url: ("/locations/" + loc.id + "/stories/"),
@@ -104,25 +136,6 @@ function getStories(marker, loc){
 
 function addStories(resp, loc) {
   // canned response until the API is built
-  resp = {
-    "stories" : [{
-      "id" : "1",
-      "date" : "April 2012",
-      "title" : "Wow such story",
-      "description" : "many description. wow",
-      "storyteller" : "Mr Doge",
-      "location_id" : loc.id,
-      "audio" : "/assets/sample_mpeg4.mp4"
-    },{
-      "id" : "3",
-      "date" : "the year 9001",
-      "title" : "git gud",
-      "description" : "lern 2 code scrub",
-      "storyteller" : "ur mum",
-      "location_id" : loc.id,
-      "audio" : "/assets/sample_mpeg4.mp4"
-    }]
-  };
 
   // get the container for the stories
   var content = $('#content');
@@ -142,12 +155,13 @@ function addStories(resp, loc) {
 function storyToHtml(story) {
   return '<div class="story" id="' + story.id + '">'
     + '<div class="ui360">'
-      + '<a href="' + story.audio + '">' + story.title + '</a>'
+      + '<a href="' + story.audio + '"></a>'
     + '</div>'
-    + '<h3>' + story.title + '</h3>'
-    + '<h4>Told by ' + story.storyteller + '</h4>'
-    + '<p class="date">' + story.date + '</p>'
-  + '</div>';
+    + '<div class="story-info">'
+      + '<h3>' + story.title + '</h3>'
+      + '<h4>Told by ' + story.storyteller + '</h4>'
+      + '<p class="date">' + story.date + '</p>'
+    + '</div>';
 }
 
 /*

@@ -1,0 +1,31 @@
+$background-light: #F6FBF4;
+$background-dark: #BFC4D5;
+$highlight-light: #FEBC98;
+$highlight-dark: #BDA25A;
+$accent: #6E1D1C;
+
+html {
+  // box-sizing: border-box;
+  font-family: 'Helvetica Neue', Courier, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: neobulletin;
+  src: url('/assets/NeoBulletin.ttf');
+}
+
+@font-face {
+  font-family: neobulletin;
+  src: url('/assets/NeoBulletin_Bold.ttf');
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'neobulletin', Courier, serif;
+}
+
+

@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: [:show, :edit, :update, :destroy, :stories]
 
   respond_to :html
 
@@ -10,6 +10,12 @@ class LocationsController < ApplicationController
 
   def show
     respond_with(@location)
+  end
+
+  def stories
+    # TODO: stub method because broken
+    @stories = @location.stories
+    respond_with(@stories)
   end
 
   def new

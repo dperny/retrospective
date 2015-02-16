@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'story' => 'story#index'
   get 'story/:id' => 'story#show'
 
+  get '/location/:id/stories' => 'location#stories'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
