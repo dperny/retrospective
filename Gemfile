@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.5'
 
+# use dotenv for management of local config variables
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -29,7 +31,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # save me from my sins
 gem 'responders'
-gem 'rails_serve_static_assets'
+# gem 'rails_serve_static_assets'
+
+# Amazon AWS to be fast
+gem 'fog', '~>1.20', require: 'fog/aws/storage'
+gem 'asset_sync'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -58,5 +64,10 @@ group :development, :test do
 
   # Use rspec for testing
   gem 'rspec-rails'
+
+  # use pry for the rails console
+  gem 'pry-rails'
+
+ 
 end
 
