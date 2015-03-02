@@ -14,3 +14,6 @@
 
 # ignore our local env variables
 .env
+
+# ignore paperclip's store directory
+/public/system/

@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy, :stories]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @locations = Location.all
@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
   def stories
     # TODO: stub method because broken
     @stories = @location.stories
-    respond_with(@stories)
+    respond_with(@stories, layout: "stories/index")
   end
 
   def new

@@ -23,7 +23,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.save
-    respond_with(@story)
+    respond_with(@story, template: 'stories/index')
   end
 
   def update
