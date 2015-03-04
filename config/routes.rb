@@ -11,12 +11,20 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  get 'story' => 'stories#index'
-  get 'story/:id' => 'stories#show'
+  get 'stories' => 'stories#index'
+  get 'stories/:id' => 'stories#show'
 
-  get 'location' => 'locations#index'
+  get 'locations' => 'locations#index'
 
-  get '/location/:id/stories' => 'locations#stories'
+  get 'locations/:id/stories' => 'locations#stories'
+
+  #
+  # API routes
+  #
+  
+  # locations
+  # get 'api/location/', to: "locations#index", defaults: { format: 'json' }
+  # get 'api/location/:id/stories', to: "locations#index", defaults: { format: 'json' }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

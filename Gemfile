@@ -64,6 +64,9 @@ group :development, :test do
 
   # Use rspec for testing
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'faker'
 
   # use pry for the rails console
   gem 'pry-rails'
