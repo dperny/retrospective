@@ -88,6 +88,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     begin
+      DatabaseCleaner.clean_with(:truncation)
       DatabaseCleaner.start
       FactoryGirl.lint
     ensure

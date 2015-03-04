@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :location do
-    name Faker::Address
+    name Faker::Address.street_name
     latitude Faker::Address.latitude
     longitude Faker::Address.longitude
   end
