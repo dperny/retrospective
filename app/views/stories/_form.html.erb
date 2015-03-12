@@ -10,14 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :uploader %><br>
-    <%= f.text_field :uploader %>
-  </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= f.text_field :date %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -25,15 +20,19 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
+    <%= f.label :storyteller %><br>
+    <%= f.text_field :storyteller %>
   </div>
   <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
+    <%= f.label :location_id %><br>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :audio %><br>
+    <%= f.file_field :audio %>
   </div>
   <div class="actions">
     <%= f.submit %>

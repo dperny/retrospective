@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Uploader:</strong>
-  <%= @story.uploader %>
-</p>
-
-<p>
   <strong>Date:</strong>
   <%= @story.date %>
 </p>
@@ -21,13 +16,13 @@
 </p>
 
 <p>
-  <strong>Latitude:</strong>
-  <%= @story.latitude %>
+  <strong>Location:</strong>
+  <%= @story.location.name %>
 </p>
 
 <p>
-  <strong>Longitude:</strong>
-  <%= @story.longitude %>
+  <strong>File:</strong>
+  <a href="<%= @story.audio.url %>"><%= @story.audio.url %></a>
 </p>
 
 <%= link_to 'Edit', edit_story_path(@story) %> |

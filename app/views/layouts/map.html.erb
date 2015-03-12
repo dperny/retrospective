@@ -22,17 +22,19 @@
     google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 </head>
-<body>
+<body class="map_page">
   <!-- used for SM2 -->
   <div id="sm2-container"></div>
   <div class="header">
-    <h1>Retrospective</h1>
+    <a href="/"><%= image_tag "retro_logo_small.png", size: "360x165" %></a>
   </div>
 
   <%= yield %>
 
+<!--
   <div class="footer">
     <p>The footer is here</p>
   </div>
+-->
 </body>
 </html>

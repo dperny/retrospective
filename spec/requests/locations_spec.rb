@@ -39,7 +39,18 @@ RSpec.describe "Locations", :type => :request do
   end
 
   describe "GET /locations/:id" do
-
+    before :all do
+      @location = FactoryGirl.create :location
+    end
+    
+    before :each do
+      get "/locations/#{@location.id}", {}, { "Accept" => "application/json" }
+    end
+    
+    let(:body) { JSON.parse(response.body) }
+    
+    it "should return the data for one location" do
+    end
   end
 
   describe "GET /locations/:id/stories" do

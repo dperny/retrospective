@@ -4,61 +4,66 @@ $highlight-light: #FEBC98;
 $highlight-dark: #BDA25A;
 $accent: #6E1D1C;
 
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+body.map_page {
 
-#map-canvas {
-  height: 100%;
-  width: 80%;
-  margin: 0;
-  padding: 0;
-  float: left;
-}
-
-.sidebar {
-  background: $background-light;
-  float: right;
-  width: 20%;
-  min-width: 120px;
-}
-
-#content {
-  @extend .sidebar;
-  height: 80%;
-  padding: 20px 0;
-  overflow: auto;
-}
-
-.header, .footer {
-  @extend .sidebar;
-  height: 10%;
-}
-
-.header {
-  text-align: center;
-  padding: 5px 0;
-}
-
-.footer {
-}
-
-.story {
-  width: 100%;
-  overflow: auto;
-
-  &:hover {
-    // background: $background-dark;
-  }
-
-  .ui360 {
+  #map-canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     float: left;
   }
+  
+  .overlay {
+    z-index: 10;
+  }
+  
+  /*
+  .sidebar {
+    background: $background-light;
+    float: right;
+    width: 20%;
+    min-width: 120px;
+  }
 
-  .story-info {
-    float: left;
+  #content {
+    @extend .sidebar;
+    height: 80%;
+    padding: 20px 0;
+    overflow: auto;
+  }
+
+  .header, .footer {
+    @extend .sidebar;
+    height: 10%;
+  }
+  */
+
+  .header {
+    @extend .overlay;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 50px;
+  }
+
+  .footer {
+  }
+
+  .story {
+    width: 100%;
+    overflow: auto;
+
+    &:hover {
+      // background: $background-dark;
+    }
+
+    .ui360 {
+      float: left;
+    }
+
+    .story-info {
+      float: left;
+    }
   }
 }

@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
   def stories
     # TODO: stub method because broken
     @stories = @location.stories
-    respond_with(@stories, layout: "stories/index")
+    respond_with(@stories)
   end
 
   def new

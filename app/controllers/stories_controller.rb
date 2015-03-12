@@ -23,7 +23,8 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.save
-    respond_with(@story, template: 'stories/index')
+    redirect_to "/stories"
+    # respond_with(@story, template: 'stories/index')
   end
 
   def update
@@ -42,6 +43,6 @@ class StoriesController < ApplicationController
     end
 
     def story_params
-      params.require(:story).permit(:uploader, :date, :title, :description, :latitude, :longitude)
+      params.require(:story).permit(:date, :title, :description, :storyteller, :location_id, :audio)
     end
 end
