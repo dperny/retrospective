@@ -17,3 +17,6 @@
 
 # ignore paperclip's store directory
 /public/system/
+
+# ignore precompiled assets
+/public/assets/
