@@ -46,32 +46,7 @@ function fetchMarkers(map) {
 function addMarkers(map,resp) {
   markers = [];
   
-  console.log(resp);
-  // canned response until I build the API
-  /*
-  resp = {
-    "links" : {
-      "locations.stories" : "/locations/{location.id}/stories"
-    },
-    "locations": [{
-      "id" : "1",
-      "name" : "Hardaway Hall",
-      "latitude" : "33.213157",
-      "longitude" : "-87.544732",
-      "links" : {
-        "stories" : [ "1", "3" ]
-      }
-    },{
-      "id" : "2",
-      "name" : "Palmer Hall",
-      "latitude" : "33.216990",
-      "longitude" : "-87.546491",
-      "links" : {
-        "stories" : [ "2", "4" ]
-      }
-    }]
-  }
-  */
+  // console.log(resp);
 
   _.each(resp.locations, function(loc) {
     var marker = new google.maps.Marker({
@@ -92,52 +67,6 @@ function addMarkers(map,resp) {
 }
 
 function getStories(marker, loc){
-  /*
-  var resp;
-  if(loc.id == 1) {
-    resp = {
-      "stories" : [{
-        "id" : "1",
-        "date" : "April 2012",
-        "title" : "Wow such story",
-        "description" : "many description. wow",
-        "storyteller" : "Mr Doge",
-        "location_id" : loc.id,
-        "audio" : "/assets/ogg.ogg"
-      },{
-        "id" : "3",
-        "date" : "the year 9001",
-        "title" : "story 2.0",
-        "description" : "lern 2 code scrub",
-        "storyteller" : "someone else",
-        "location_id" : loc.id,
-        "audio" : "/assets/wav.wav"
-      }]
-    }
-  } else {
-    resp = {
-      "stories" : [{
-        "id" : "2",
-        "date" : "August 1999",
-        "title" : "Fight with a Professor",
-        "description" : "a description",
-        "storyteller" : "Ms. Pea",
-        "location_id" : loc.id,
-        "audio" : "/assets/ogg.ogg"
-      },{
-        "id" : "4",
-        "date" : "January 1988",
-        "title" : "Lesson on the Stairs",
-        "description" : "another desc",
-        "storyteller" : "Mr. Brown",
-        "location_id" : loc.id,
-        "audio" : "/assets/wav.wav"
-      }]
-    }
-  }
-  return resp.stories
-  // addStories(resp, loc);
-  */
   $.ajax({
     url: ("/locations/" + loc.id + "/stories.json"),
     success: function(resp){ addStories(resp, loc, marker); },
