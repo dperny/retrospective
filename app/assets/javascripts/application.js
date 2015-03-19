@@ -18,3 +18,4 @@
 //= require berniecode
 //= require 360player
 //= require_tree .
+//= stub map

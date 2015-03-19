@@ -1,6 +1,6 @@
 /*
  * map.js
- * This file is the Javascript for the map embedded in any page
+ * This file is the Javascript for the map embedded in the homepage
  */
 
 var map = null;
