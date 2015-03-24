@@ -1,14 +1,17 @@
 class LocationsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :stories]
   before_action :set_location, only: [:show, :edit, :update, :destroy, :stories]
 
   respond_to :html, :json
 
   def index
-    @locations = Location.all
+    @locations = Location.order(name: :asc)
+    @admin = admin_signed_in?
     respond_with(@locations)
   end
 
   def show
+    @admin = admin_signed_in?
     respond_with(@location)
   end
 

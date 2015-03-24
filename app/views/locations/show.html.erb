@@ -15,5 +15,7 @@
   <%= @location.longitude %>
 </p>
 
+<% if @admin %>
 <%= link_to 'Edit', edit_location_path(@location) %> |
+<% end%>
 <%= link_to 'Back', locations_path %>

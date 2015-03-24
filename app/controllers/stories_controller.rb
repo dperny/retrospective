@@ -1,14 +1,17 @@
 class StoriesController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
   def index
     @stories = Story.all
+    @admin = admin_signed_in?
     respond_with(@stories)
   end
 
   def show
+    @admin = admin_signed_in?
     respond_with(@story)
   end
 

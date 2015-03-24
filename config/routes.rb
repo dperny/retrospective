@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins, :skip => :registrations
   resources :locations
 
   resources :stories

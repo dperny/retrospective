@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :admin do
+    
+  end
+
   factory :location do
     name Faker::Address.street_name
     latitude Faker::Address.latitude
