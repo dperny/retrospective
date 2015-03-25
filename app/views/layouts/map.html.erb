@@ -27,7 +27,15 @@
   <!-- used for SM2 -->
   <div id="sm2-container"></div>
   <div class="header">
-    <a href="/"><%= image_tag "retro_logo_small.png", size: "360x165" %></a>
+    <div class="logo">
+      <a href="/"><%= image_tag "retro_logo_small_outline.png", size: "324x148" %></a>
+    </div>
+    <div class="home_nav">
+      <div class="link"><a href="/about"><h3>About Retrospective</h3></a></div>
+      <div class="link"><a href="/submit"><h3>Submit a Story</h3></a></div>
+      <div class="link"><a href="/locations"><h3>List of Locations</h3></a></div>
+      <div class="link"><a href="/stories"><h3>List of Stories</h3></a></div>
+    </div>
   </div>
 
   <%= yield %>
