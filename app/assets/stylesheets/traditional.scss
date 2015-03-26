@@ -1,0 +1,56 @@
+/*
+ * This sheet contains all styles for "traditional" style backends, like
+ * /locations and /stories. 
+ */ 
+$background-light: #F6FBF4;
+$background-dark: #BFC4D5;
+$highlight-light: #FEBC98;
+$highlight-dark: #BDA25A;
+$accent: #6E1D1C;
+
+body.traditional_page {
+
+  background-color: $background-light;
+  
+  .constrain {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .header {
+    @extend .constrain;
+    height: 200px;
+
+    .logo {
+      float: left;
+    }
+
+    .home_nav {
+      float: right;
+      list-style: none;
+
+      .link {
+        float: left;
+        padding: 10px;
+        border-style: solid;
+        border-width: 0;
+        border-left-width: 2px;
+        &:first-of-type {
+          border-left: 0;
+        }
+        a {
+          color: $accent;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .content {
+    @extend .constrain;
+  }
+
+  .footer {
+    @extend .constrain;
+  }
+}
