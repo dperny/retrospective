@@ -6,6 +6,7 @@
 var map = null;
 var markers = [];
 var infoWindow = null;
+var markerImagePath = "";
 
 /*
  * Initializes a new map when the page loads
@@ -16,6 +17,8 @@ function initialize() {
       json: 'application/json'
     }
   });
+  
+  markerImagePath = $("#marker_image").attr('src');
   
   var mapOptions = {
     center: {lat: 33.2109715, lng: -87.5386825},
@@ -51,7 +54,7 @@ function addMarkers(map,resp) {
   _.each(resp.locations, function(loc) {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(loc.latitude, loc.longitude),
-      icon: "/assets/retro_tab_smaller.png"
+      icon: markerImagePath
     });
 
     // masterlist of markers
