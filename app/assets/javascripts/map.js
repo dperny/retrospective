@@ -20,7 +20,7 @@ function initialize() {
   var mapOptions = {
     center: {lat: 33.2109715, lng: -87.5386825},
     zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
     streetViewControl: false,
     minZoom: 15,
 
@@ -39,7 +39,7 @@ function fetchMarkers(map) {
     url: "/locations.json",
     // header: { "Accept": "application/json" },
     success: function(resp){ addMarkers(map, resp); },
-    error: function(resp) { console.log(resp), alert("Something went wrong"); }
+    error: function(resp) { console.log(resp); alert("Something went wrong"); }
   });
 }
 
@@ -51,7 +51,7 @@ function addMarkers(map,resp) {
   _.each(resp.locations, function(loc) {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(loc.latitude, loc.longitude),
-      icon: "/assets/retro_tab_small.png"
+      icon: "/assets/retro_tab_smaller.png"
     });
 
     // masterlist of markers
