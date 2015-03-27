@@ -8,6 +8,9 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Monitor the app with NewRelic
+gem 'newrelic_rpm'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -39,6 +42,8 @@ gem 'responders'
 # Amazon AWS to be fast
 gem 'fog', '~>1.20', require: 'fog/aws/storage'
 gem 'asset_sync'
+
+gem 'aws-sdk', '< 2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
