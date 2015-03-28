@@ -7,7 +7,7 @@
     <tr>
       <th>Date</th>
       <th>Title</th>
-      <th>Description</th>
+      <th>Storyteller</th>
       <th>Location</th>
       <th>Audio</th>
       <% if @admin %>
@@ -21,7 +21,7 @@
       <tr>
         <td><%= story.date %></td>
         <td><%= story.title %></td>
-        <td><%= story.description %></td>
+        <td><%= story.storyteller %></td>
         <td><%= story.location.name %></td>
         <td><a href="<%= story.audio.url %>"><%= story.audio.url %></a></td>
       <% if @admin %>
