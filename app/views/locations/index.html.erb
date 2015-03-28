@@ -15,7 +15,7 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= location.name %></td>
+        <td><a href="/locations/<%= location.id %>/stories"><%= location.name %></a></td>
         <td><%= location.latitude %></td>
         <td><%= location.longitude %></td>
       <% if @admin %>

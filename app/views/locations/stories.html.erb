@@ -8,7 +8,6 @@
       <th>Date</th>
       <th>Title</th>
       <th>Storyteller</th>
-      <th>Audio</th>
       <% if @admin %>
         <th colspan="3"></th>
       <% end %>
@@ -19,9 +18,8 @@
     <% @stories.each do |story| %>
       <tr>
         <td><%= story.date %></td>
-        <td><%= story.title %></td>
+        <td><a href="/stories/<%= story.id %>"><%= story.title %></a></td>
         <td><%= story.storyteller %></td>
-        <td><a href="<%= story.audio.url %>"><%= story.audio.url %></a></td>
       <% if @admin %>
         <td><%= link_to 'Show', story %></td>
         <td><%= link_to 'Edit', edit_story_path(story) %></td>
