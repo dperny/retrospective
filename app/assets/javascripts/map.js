@@ -32,6 +32,9 @@ function initialize() {
       mapOptions);
   
   infoWindow = new google.maps.InfoWindow({});
+  google.maps.event.addListener(infoWindow,'closeclick',function(){
+    soundManager.stopAll();
+  });
   fetchMarkers(map);
 }
 
@@ -63,6 +66,8 @@ function addMarkers(map,resp) {
 
     // register a click event, close on the loc object
     google.maps.event.addListener(marker, 'click', function() {
+      soundManager.stopAll();
+      console.log("stopped sounds");
       map.panTo(marker.getPosition());
       getStories(marker, loc);
     });
