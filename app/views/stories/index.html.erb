@@ -10,6 +10,7 @@
       <th>Storyteller</th>
       <th>Location</th>
       <th>Audio</th>
+      <th>Image</th>
       <% if @admin %>
         <th colspan="3"></th>
       <% end %>
@@ -24,6 +25,7 @@
         <td><%= story.storyteller %></td>
         <td><%= story.location.name %></td>
         <td><a href="<%= story.audio.url %>"><%= story.audio.url %></a></td>
+        <td><a href="<%= story.image.url %>"><%= story.image.url %></a></td>
       <% if @admin %>
         <td><%= link_to 'Show', story %></td>
         <td><%= link_to 'Edit', edit_story_path(story) %></td>

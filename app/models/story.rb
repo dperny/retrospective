@@ -1,17 +1,11 @@
 class Story < ActiveRecord::Base
   belongs_to :location
 
-  has_attached_file :audio, 
-    storage: :s3,
-    s3_credentials: { 
-      access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-      secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
-    },
-    bucket: ENV["FOG_DIRECTORY"],
-    url: ":s3_domain_url",
-    path: ":rails_env/:class/:filename"
-
+  has_attached_file :audio, path: ":rails_env/:class/:filename"
   validates_attachment_content_type :audio, content_type: /\Aaudio/
+  
+  has_attached_file :image, path: ":rails_env/:class/image/:filename"
+  validates_attachment_content_type :image, content_type: /\Aimage/
 
   def to_builder
     Jbuilder.new do |story|
