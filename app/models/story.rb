@@ -4,7 +4,8 @@ class Story < ActiveRecord::Base
   has_attached_file :audio, path: ":rails_env/:class/:filename"
   validates_attachment_content_type :audio, content_type: /\Aaudio/
   
-  has_attached_file :image, path: ":rails_env/:class/image/:filename", default_url: "/assets/Question_mark_full_transparent.png"
+  has_attached_file :image, path: ":rails_env/:class/image/:style/:filename", default_url: "/assets/Question_mark_full_transparent.png",
+    styles: { medium: "600x400>" }
   validates_attachment_content_type :image, content_type: /\Aimage/
 
   def to_builder
