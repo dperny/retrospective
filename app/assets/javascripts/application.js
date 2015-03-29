@@ -16,5 +16,6 @@
 //= require soundmanager2
 //= require berniecode
 //= require 360player
+//= require bar-ui
 //= require_tree .
 //= stub map

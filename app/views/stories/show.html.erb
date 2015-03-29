@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class="story_image">
+  <img src="<%= @story.image.url %>" alt="a picture of the person telling this story" width="600" height="400">
+  <%= render 'player' %>
+</div>
+
 <p>
   <strong>Date:</strong>
   <%= @story.date %>
@@ -18,16 +23,6 @@
 <p>
   <strong>Location:</strong>
   <%= @story.location.name %>
-</p>
-
-<p>
-  <strong>Audio:</strong>
-  <a href="<%= @story.audio.url %>"><%= @story.audio.url %></a>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <a href="<%= @story.image.url %>"><%= @story.image.url %></a>
 </p>
 
 <% if @admin %>

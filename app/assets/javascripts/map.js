@@ -114,7 +114,9 @@ function storyToHtml(story) {
         '<a href="<%= story.audio %>"></a>'      + 
       '</div>'                                   + 
       '<div class="story-info">'                 +
-      '<h3><%= story.title %></h3>'              + 
+      '<h3><a class="noblue" href="/stories/<%= story.id %>">' +
+        '<%= story.title %>'                     +
+      '</a></h3>'                                + 
       '<h4>Told by <%= story.storyteller %></h4>'+
       '<p class="date"><%= story.date %></p>'    +
     '</div>')({story: story});
