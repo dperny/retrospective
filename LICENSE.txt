@@ -1,3 +1,6 @@
+CODE: The source code for this site is licensed under the MIT license, which is below.
+IMAGES: The images for this site are provided only for completeness (images outside of /vendor), and are all created by and property of UA Creative Campus. If you want to use the Retrospective logo or the Retrospective pin, you can contact them for permission at uacreativecampus@gmail.com. Please do not use image assets for this site without permission.
+
 The MIT License (MIT)
 
 Copyright (c) 2015 Drew Erny
